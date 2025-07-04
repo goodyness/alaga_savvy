@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Message Detail{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold mb-8 text-[#3E005A] text-center">Message Details</h2>
+
+  <div class="bg-[#F9F6FB] border border-[#E0D6EC] p-8 rounded-2xl shadow-lg space-y-4 text-sm sm:text-base">
+    <p>
+      <span class="font-semibold text-[#3E005A]">From:</span>
+      {{ message.name }} <span class="text-gray-500">({{ message.email }})</span>
+    </p>
+    <p>
+      <span class="font-semibold text-[#3E005A]">Sent At:</span>
+      <span class="text-gray-600">{{ message.sent_at|date:"M d, Y - h:i A" }}</span>
+    </p>
+    <hr class="border-t border-[#E0D6EC] my-4">
+    <div>
+      <p class="font-semibold text-[#3E005A] mb-2">Message:</p>
+      <p class="whitespace-pre-line text-gray-700 leading-relaxed">{{ message.message }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

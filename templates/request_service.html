@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Request Service | AlagaSavvy{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-16">
+  <h2 class="text-3xl font-bold text-center text-[#3E005A] mb-4">Service Request Form</h2>
+  <p class="text-center text-sm text-gray-600 mb-8">
+    Kindly fill out the form below to request one of our traditional engagement services.
+    We’ll get back to you shortly with details and next steps.
+  </p>
+
+  <form method="POST" class="bg-[#F9F6FB] border border-[#E0D6EC] p-8 rounded-2xl shadow-lg space-y-6">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        <label for="{{ field.id_for_label }}"
+               class="block text-sm font-medium text-[#3E005A] mb-2">
+          {{ field.label }}
+        </label>
+        {% render_field field class="w-full px-4 py-2 border border-[#D8CFE3] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FDBF24] focus:border-[#FDBF24] text-gray-800" %}
+        {% if field.errors %}
+          <p class="text-red-600 text-xs mt-1">{{ field.errors.0 }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit"
+            class="w-full bg-[#FDBF24] text-[#3E005A] font-semibold py-2.5 rounded-full hover:bg-yellow-400 transition duration-300 shadow-md">
+      Submit Request
+    </button>
+  </form>
+</div>
+{% endblock %}

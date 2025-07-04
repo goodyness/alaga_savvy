@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ work.title }} | AlagaSavvy{% endblock %}
+
+{% block content %}
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-[#3E005A] mb-4">{{ work.title }}</h2>
+    <p class="text-gray-700 mb-8">{{ work.description }}</p>
+
+    {% if work.images.exists %}
+    <div class="grid grid-cols-3 gap-4">
+      {% for img in work.images.all %}
+      <div class="overflow-hidden rounded-xl shadow hover:shadow-lg transition-all duration-300">
+        <img src="{{ img.image.url }}" alt="Work image"
+             onclick="openLightbox(this.src)"
+             class="w-full h-44 object-cover cursor-pointer transform hover:scale-105 transition duration-300">
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="text-sm text-gray-500">No images uploaded for this work.</p>
+    {% endif %}
+  </div>
+</section>
+
+<div id="lightboxModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+  <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-2xl font-bold">×</button>
+  <img id="lightboxImage" src="" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightboxImage").src = src;
+    document.getElementById("lightboxModal").classList.remove("hidden");
+  }
+  function closeLightbox() {
+    document.getElementById("lightboxModal").classList.add("hidden");
+  }
+</script>
+{% endblock %}

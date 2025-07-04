@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Contact Messages | Admin{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold mb-8 text-[#3E005A] text-center">All Contact Messages</h2>
+
+  <div class="bg-[#F9F6FB] border border-[#E0D6EC] rounded-2xl shadow-lg overflow-hidden">
+    <ul class="divide-y divide-[#E0D6EC]">
+      {% for message in page_obj %}
+      <li class="px-6 py-4 hover:bg-[#FFFDF9] transition">
+        <a href="{% url 'contact_message_detail' message.pk %}" class="block space-y-1">
+          <div class="flex justify-between items-center">
+            <p class="font-semibold text-[#3E005A]">{{ message.name }}</p>
+            <span class="text-xs text-gray-500">{{ message.sent_at|date:"M d, Y" }}</span>
+          </div>
+          <p class="text-sm text-gray-600 truncate">{{ message.message }}</p>
+        </a>
+      </li>
+      {% empty %}
+      <li class="px-6 py-6 text-gray-500 text-center text-sm">No messages found.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="mt-6 flex justify-center space-x-2">
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <span class="px-4 py-2 bg-[#3E005A] text-white rounded">{{ num }}</span>
+      {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+        <a href="?page={{ num }}" class="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-300">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Next</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

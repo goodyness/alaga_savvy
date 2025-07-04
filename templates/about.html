@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block title %}About Us | AlagaSavvy{% endblock %}
+{% load static %}
+
+{% block content %}
+<section class="bg-[#F9F6FB] py-16 px-4">
+  <div class="max-w-5xl mx-auto text-center animate-fadeInUp">
+    <h1 class="text-4xl font-bold text-[#3E005A] mb-6">About <span class="text-[#FDBF24]">AlagaSavvy</span></h1>
+    <p class="text-lg text-[#4B4453] leading-relaxed max-w-3xl mx-auto mb-8">
+      At <span class="text-[#3E005A] font-semibold">AlagaSavvy</span>, we specialize in hosting traditional Yoruba weddings
+      with flair, reverence, and joy. Our passion lies in honoring cultural heritage while curating stylish, heartfelt,
+      and unforgettable experiences tailored for every couple’s unique journey.
+    </p>
+    <a href="{% url 'request_service' %}" 
+       class="inline-block bg-[#FDBF24] text-[#3E005A] font-semibold px-6 py-3 rounded-full shadow hover:bg-yellow-400 transition duration-300">
+      Request a Service
+    </a>
+  </div>
+</section>
+
+
+<section class="py-5 bg-gray-100" id="gallery">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Memorable Moments</h2>
+
+    <div class="overflow-x-auto">
+      <div class="flex space-x-4 snap-x snap-mandatory overflow-x-auto pb-4 scroll-smooth"
+           style="scrollbar-width: none;">
+        {% for i in "123456789" %}
+          {% with img_path="gallery/"|add:i|add:".jpg" %}
+          <div class="min-w-[80%] sm:min-w-[48%] md:min-w-[30%] lg:min-w-[30%] max-w-xs bg-white rounded-xl shadow hover:shadow-lg transition duration-300 cursor-pointer snap-start"
+               onclick="openImageModal('{% static img_path %}')">
+            <img src="{% static img_path %}" alt="Gallery Image {{ i }}" class="w-full h-60 object-cover rounded-t-xl">
+            <div class="p-3">
+              <p class="text-sm text-gray-700">
+                {% if i == '1' %}A grand entrance that left everyone in awe.{% endif %}
+                {% if i == '2' %}Ẹrú Ìyàwó beautifully arranged with class.{% endif %}
+                {% if i == '3' %}Proposal and acceptance with elegance and grace.{% endif %}
+                {% if i == '4' %}Royalty in motion — the radiant bride.{% endif %}
+                {% if i == '5' %}Alaga in action — anchoring with charm and wit.{% endif %}
+                {% if i == '6' %}Heartfelt moments shared under tradition and love.{% endif %}
+                {% if i == '7' %}Unforgettable cheers and blessings from elders.{% endif %}
+                {% if i == '8' %}Bride and groom united in laughter.{% endif %}
+                {% if i == '9' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '10' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '11' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '12' %}A symbolic gift exchange moment.{% endif %}
+              </p>
+            </div>
+          </div>
+          {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- 🖼️ Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+    <button onclick="closeImageModal()" class="absolute top-5 right-5 text-white text-3xl">×</button>
+    <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[90vh] rounded-xl shadow-lg transition-all duration-300">
+  </div>
+</section>
+
+<script>
+  function openImageModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function closeImageModal() {
+    document.getElementById("imageModal").classList.add("hidden");
+    document.getElementById("modalImage").src = "";
+  }
+</script>
+
+<section class="py-5 bg-[#F9F6FB] px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Mission -->
+    <div class="bg-[#FFF8E6] p-8 rounded-2xl shadow-md animate-fadeInLeft">
+      <h2 class="text-2xl font-bold text-[#3E005A] mb-4">Our Mission</h2>
+      <p class="text-[#4B4453] leading-relaxed">
+        Our mission is to provide an exceptional traditional wedding hosting service that honors cultural values while
+        infusing contemporary flair. We strive to create memorable experiences for our clients and their guests—
+        making every wedding a joyous celebration of love and heritage.
+      </p>
+    </div>
+
+    <!-- Vision -->
+    <div class="bg-[#EFE4F5] p-8 rounded-2xl shadow-md animate-fadeInRight">
+      <h2 class="text-2xl font-bold text-[#3E005A] mb-4">Our Vision</h2>
+      <p class="text-[#4B4453] leading-relaxed">
+        Our vision is to be the premier traditional wedding compere, renowned for our expertise, creativity, and innovation.
+        We aim to set the standard for exceptional wedding hosting—exceeding expectations and creating cherished memories
+        that last a lifetime. We continue to elevate the art of celebration with grace, excellence, and cultural pride.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="bg-white py-5 px-4">
+  <div class="max-w-6xl mx-auto text-center mb-12">
+    <h2 class="text-3xl font-bold text-[#3E005A] mb-4">What Our Clients Say</h2>
+    <p class="text-gray-600 text-lg">Real words from couples we’ve had the honor to serve.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto animate-fadeInUp">
+    
+    <!-- Testimony 1 -->
+    <div class="bg-[#F9F6FB] border border-[#E5DFF1] rounded-2xl shadow p-6 flex flex-col">
+      <p class="text-gray-700 italic mb-4">“AlagaSavvy made our traditional engagement unforgettable. The flow, energy, and cultural richness were everything we dreamed of.”</p>
+      <div class="mt-auto">
+        <p class="text-[#3E005A] font-semibold">– Tola & Dayo</p>
+        <p class="text-sm text-gray-500">March 2024, Abeokuta</p>
+      </div>
+    </div>
+
+    <!-- Testimony 2 -->
+    <div class="bg-[#FFF8E6] border border-[#FDEFC4] rounded-2xl shadow p-6 flex flex-col">
+      <p class="text-gray-700 italic mb-4">“Professional, graceful, and super fun! Our guests are still talking about how beautiful the ceremony was.”</p>
+      <div class="mt-auto">
+        <p class="text-[#A56200] font-semibold">– Omolabake & Adegoke</p>
+        <p class="text-sm text-gray-500">October 2024, Lagos</p>
+      </div>
+    </div>
+
+    <!-- Testimony 3 -->
+    <div class="bg-[#FFF3F5] border border-[#FFD6DC] rounded-2xl shadow p-6 flex flex-col">
+      <p class="text-gray-700 italic mb-4">“From the proposal letter to the Ẹrú Ìyàwó, AlagaSavvy handled it all seamlessly. Highly recommend!”</p>
+      <div class="mt-auto">
+        <p class="text-[#B91C1C] font-semibold">– Gbolohan & Temitope</p>
+        <p class="text-sm text-gray-500">September 2024, Ibadan</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="py-5 bg-gray-100" id="gallery">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Memorable Moments</h2>
+
+    <div class="overflow-x-auto">
+      <div class="flex space-x-4 snap-x snap-mandatory overflow-x-auto pb-4 scroll-smooth"
+           style="scrollbar-width: none;">
+        {% for i in "123456789" %}
+          {% with img_path="gallery/"|add:i|add:".jpg" %}
+          <div class="min-w-[80%] sm:min-w-[48%] md:min-w-[30%] lg:min-w-[30%] max-w-xs bg-white rounded-xl shadow hover:shadow-lg transition duration-300 cursor-pointer snap-start"
+               onclick="openImageModal('{% static img_path %}')">
+            <img src="{% static img_path %}" alt="Gallery Image {{ i }}" class="w-full h-60 object-cover rounded-t-xl">
+            <div class="p-3">
+              <p class="text-sm text-gray-700">
+                {% if i == '1' %}A grand entrance that left everyone in awe.{% endif %}
+                {% if i == '2' %}Ẹrú Ìyàwó beautifully arranged with class.{% endif %}
+                {% if i == '3' %}Proposal and acceptance with elegance and grace.{% endif %}
+                {% if i == '4' %}Royalty in motion — the radiant bride.{% endif %}
+                {% if i == '5' %}Alaga in action — anchoring with charm and wit.{% endif %}
+                {% if i == '6' %}Heartfelt moments shared under tradition and love.{% endif %}
+                {% if i == '7' %}Unforgettable cheers and blessings from elders.{% endif %}
+                {% if i == '8' %}Bride and groom united in laughter.{% endif %}
+                {% if i == '9' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '10' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '11' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '12' %}A symbolic gift exchange moment.{% endif %}
+              </p>
+            </div>
+          </div>
+          {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- 🖼️ Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+    <button onclick="closeImageModal()" class="absolute top-5 right-5 text-white text-3xl">×</button>
+    <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[90vh] rounded-xl shadow-lg transition-all duration-300">
+  </div>
+</section>
+
+<script>
+  function openImageModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function closeImageModal() {
+    document.getElementById("imageModal").classList.add("hidden");
+    document.getElementById("modalImage").src = "";
+  }
+</script>
+
+
+
+<style>
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease-out;
+}
+</style>
+{% endblock %}

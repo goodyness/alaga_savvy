@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Rate Us | AlagaSavvy{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold text-center text-[#3E005A] mb-8">Rate Us</h2>
+
+  <form method="POST" class="bg-[#F9F6FB] border border-[#E0D6EC] p-8 rounded-2xl shadow-lg space-y-6">
+    {% csrf_token %}
+    {% for field in form %}
+      <div>
+        <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-[#3E005A] mb-2">
+          {{ field.label }}
+        </label>
+        {% render_field field class="w-full px-4 py-2 border border-[#D8CFE3] rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FDBF24] focus:border-[#FDBF24] text-gray-800" %}
+        {% if field.errors %}
+          <p class="text-red-600 text-xs mt-1">{{ field.errors.0 }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="w-full bg-[#FDBF24] text-[#3E005A] font-semibold py-2.5 rounded-full hover:bg-yellow-400 transition duration-300 shadow-md">
+      Submit Rating
+    </button>
+  </form>
+</div>
+
+<!-- Toast Notification -->
+{% if messages %}
+<div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2">
+  {% for message in messages %}
+    <div class="bg-[#3E005A] text-white px-4 py-3 rounded-lg shadow-md animate-slide-in">
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  setTimeout(() => {
+    const toast = document.getElementById('toast-container');
+    if (toast) {
+      toast.remove();
+    }
+  }, 3000);
+</script>
+
+<style>
+  @keyframes slide-in {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out forwards;
+  }
+</style>
+{% endif %}
+{% endblock %}

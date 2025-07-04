@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}All Recent Works{% endblock %}
+
+{% block content %}
+<section class="py-20 bg-[#F9F6FB]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#3E005A] mb-12">All Recent Works</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {% for work in page_obj %}
+      <a href="{% url 'work_detail' work.id %}" class="block group hover:shadow-xl transition-all duration-300">
+        <div class="bg-white rounded-xl shadow overflow-hidden">
+          {% if work.images.first %}
+          <img src="{{ work.images.first.image.url }}" alt="{{ work.title }}"
+               class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300">
+          {% endif %}
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-[#3E005A] mb-1">{{ work.title }}</h3>
+            <p class="text-sm text-gray-600 line-clamp-3">{{ work.description|truncatewords:20 }}</p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center flex-wrap gap-2">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"
+           class="px-4 py-2 bg-[#E9E2F2] text-[#3E005A] rounded hover:bg-[#D5C9EA] transition">
+          Previous
+        </a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <span class="px-4 py-2 bg-[#FDBF24] text-[#3E005A] font-semibold rounded">{{ num }}</span>
+        {% elif num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+          <a href="?page={{ num }}"
+             class="px-4 py-2 bg-white border border-[#E0D6EC] text-[#3E005A] rounded hover:bg-[#F0EAF7] transition">
+            {{ num }}
+          </a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"
+           class="px-4 py-2 bg-[#E9E2F2] text-[#3E005A] rounded hover:bg-[#D5C9EA] transition">
+          Next
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

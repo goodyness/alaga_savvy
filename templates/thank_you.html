@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Thank You | AlagaSavvy{% endblock %}
+
+{% block content %}
+<div class="text-center py-20">
+  <h2 class="text-2xl font-semibold text-green-700 mb-4">Thank you, {{ client.full_name }}!</h2>
+  <p class="text-gray-600">We’ve received your request for <strong>{{ client.get_service_needed_display }}</strong>. We'll be in touch soon.</p>
+</div>
+{% endblock %}

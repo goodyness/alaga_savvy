@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home | AlagaSavvy{% endblock %}
+
+{% block content %}
+
+
+<!-- 🔁 Hero Carousel Section with blur and description -->
+<div x-data="{ slide: 1 }" class="relative w-full h-[500px] overflow-hidden" x-init="setInterval(() => slide = slide === 2 ? 1 : slide + 1, 6000)">
+
+  <!-- Slide 1 -->
+  <div x-show="slide === 1" x-transition:enter="transition ease-out duration-700"
+       x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+       class="absolute inset-0">
+    <div class="w-full h-full relative">
+      <img src="{% static 'img/alaga1.jpg' %}" alt="Hero 1" class="w-full h-full object-cover blur-sm" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#3E005A]/70 via-black/40 to-transparent flex flex-col items-center justify-center text-center px-4">
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold mb-4">Celebrate Love the Traditional Way</h2>
+        <p class="text-white text-base md:text-lg max-w-2xl mb-6">
+          Alaga Ìdúró and Ìjòkò, we source and wrap Ẹrú Ìyàwó, craft stunning proposal & acceptance letters, offer consultations for couples — and much more.
+        </p>
+        <a href="{% url 'request_service' %}"
+           class="inline-block bg-[#FDBF24] text-[#3E005A] font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition duration-300">
+          Become a Client
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div x-show="slide === 2" x-transition:enter="transition ease-out duration-700"
+       x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+       class="absolute inset-0">
+    <div class="w-full h-full relative">
+      <img src="{% static 'img/alaga2.jpg' %}" alt="Hero 2" class="w-full h-full object-cover blur-sm" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#3E005A]/70 via-black/40 to-transparent flex flex-col items-center justify-center text-center px-4">
+        <h2 class="text-white text-3xl md:text-5xl font-extrabold mb-4">Rooted in Culture, Styled for Elegance</h2>
+        <p class="text-white text-base md:text-lg max-w-2xl mb-6">
+          From proposal letters to Ẹrú Ìyàwó packaging, we blend Yoruba tradition with modern finesse to make your engagement unforgettable.
+        </p>
+        <a href="{% url 'request_service' %}"
+           class="inline-block bg-[#FDBF24] text-[#3E005A] font-semibold px-6 py-2 rounded-full shadow-lg hover:bg-yellow-400 transition duration-300">
+          Become a Client
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="py-5 bg-[#F9F6FB]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+
+      <!-- Recent Works -->
+      <a href="{% url 'all_recent_works' %}" class="group bg-white hover:bg-[#F3E9F9] border border-[#3E005A]/20 p-4 rounded-lg text-center shadow-sm hover:shadow-lg transition duration-200">
+        <svg class="mx-auto mb-2 w-6 h-6 text-[#3E005A] group-hover:text-[#FDBF24]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 6c0 1.657 4.03 3 9 3s9-1.343 9-3-4.03-3-9-3-9 1.343-9 3z" />
+          <path d="M4 6v6c0 1.657 4.03 3 9 3s9-1.343 9-3V6" />
+          <path d="M4 12v6c0 1.657 4.03 3 9 3s9-1.343 9-3v-6" />
+        </svg>
+        <span class="text-xs font-medium text-[#3E005A] group-hover:text-[#FDBF24]">Recent Works</span>
+      </a>
+
+      <!-- Work Videos -->
+      <a href="{% url 'all_work_videos' %}" class="group bg-white hover:bg-[#F3E9F9] border border-[#3E005A]/20 p-4 rounded-lg text-center shadow-sm hover:shadow-lg transition duration-200">
+        <svg class="mx-auto mb-2 w-6 h-6 text-[#3E005A] group-hover:text-[#FDBF24]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 3v18l15-9L5 3z" />
+        </svg>
+        <span class="text-xs font-medium text-[#3E005A] group-hover:text-[#FDBF24]">Work Videos</span>
+      </a>
+
+      <!-- Become a Client -->
+      <a href="{% url 'request_service' %}" class="group bg-white hover:bg-[#F3E9F9] border border-[#3E005A]/20 p-4 rounded-lg text-center shadow-sm hover:shadow-lg transition duration-200">
+        <svg class="mx-auto mb-2 w-6 h-6 text-[#3E005A] group-hover:text-[#FDBF24]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 00-3-3.87M7 21v-2a4 4 0 013-3.87M12 7a4 4 0 110-8 4 4 0 010 8z" />
+        </svg>
+        <span class="text-xs font-medium text-[#3E005A] group-hover:text-[#FDBF24]">Become a Client</span>
+      </a>
+
+      <!-- Contact Messages -->
+      <a href="#" class="group bg-white hover:bg-[#F3E9F9] border border-[#3E005A]/20 p-4 rounded-lg text-center shadow-sm hover:shadow-lg transition duration-200">
+        <svg class="mx-auto mb-2 w-6 h-6 text-[#3E005A] group-hover:text-[#FDBF24]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 15V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10m18 0l-9 6-9-6" />
+        </svg>
+        <span class="text-xs font-medium text-[#3E005A] group-hover:text-[#FDBF24]">Contact Messages</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="services" class="py-5 bg-[#F9F6FB]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#3E005A] mb-12">Our Services</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      
+      <!-- Service 1 -->
+      <div class="relative group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+        <img src="{% static 'images/s1.jpg' %}" alt="Alaga Ìdúró & Ìjòkò"
+             class="h-44 w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.07] group-hover:brightness-105">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-[#3E005A] mb-2">Alaga Ìdúró & Ìjòkò</h3>
+          <p class="text-sm text-gray-600">Anchoring traditional engagements with elegance and authenticity.</p>
+        </div>
+        <div class="absolute inset-0 bg-[#3E005A]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="{% url 'request_service' %}?type=alaga"
+             class="bg-[#FDBF24] text-[#3E005A] font-semibold py-2 px-5 rounded-full shadow-md hover:bg-yellow-400 transition">
+            Request This Service
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="relative group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+        <img src="{% static 'images/s2.jpg' %}" alt="Letters"
+             class="h-44 w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.07] group-hover:brightness-105">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-[#3E005A] mb-2">Proposal & Acceptance Letters</h3>
+          <p class="text-sm text-gray-600">Crafting eloquent, culturally appropriate letters for your event.</p>
+        </div>
+        <div class="absolute inset-0 bg-[#3E005A]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="{% url 'request_service' %}?type=letters"
+             class="bg-[#FDBF24] text-[#3E005A] font-semibold py-2 px-5 rounded-full shadow-md hover:bg-yellow-400 transition">
+            Request This Service
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="relative group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+        <img src="{% static 'images/s3.jpg' %}" alt="Consultation"
+             class="h-44 w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.07] group-hover:brightness-105">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-[#3E005A] mb-2">Consultation for Couples</h3>
+          <p class="text-sm text-gray-600">Expert guidance on traditional marriage rites and expectations.</p>
+        </div>
+        <div class="absolute inset-0 bg-[#3E005A]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="{% url 'request_service' %}?type=consult"
+             class="bg-[#FDBF24] text-[#3E005A] font-semibold py-2 px-5 rounded-full shadow-md hover:bg-yellow-400 transition">
+            Request This Service
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="relative group bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+        <img src="{% static 'images/s4.jpg' %}" alt="Ẹrú Ìyàwó Support"
+             class="h-44 w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-[1.07] group-hover:brightness-105">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-[#3E005A] mb-2">Ẹrú Ìyàwó Support</h3>
+          <p class="text-sm text-gray-600">Helping you source, package and present the traditional bridal items.</p>
+        </div>
+        <div class="absolute inset-0 bg-[#3E005A]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+          <a href="{% url 'request_service' %}?type=eru"
+             class="bg-[#FDBF24] text-[#3E005A] font-semibold py-2 px-5 rounded-full shadow-md hover:bg-yellow-400 transition">
+            Request This Service
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-[#F9F6FB]" id="recent-works">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#3E005A] mb-12">Recent Works</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {% for work in recent_works %}
+      <a href="{% url 'work_detail' work.id %}" class="block group hover:shadow-lg rounded-xl transition-all duration-300">
+        <div class="bg-[#F9F6FB] rounded-xl shadow overflow-hidden">
+          {% if work.images.first %}
+          <img src="{{ work.images.first.image.url }}" alt="{{ work.title }}"
+              class="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-105">
+          {% endif %}
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-[#3E005A] mb-1">{{ work.title }}</h3>
+            <p class="text-sm text-gray-600 line-clamp-3">{{ work.description|truncatewords:20 }}</p>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+
+    <div class="text-center mt-10">
+      <a href="{% url 'all_recent_works' %}"
+         class="inline-block px-6 py-2.5 bg-[#FDBF24] text-[#3E005A] text-sm font-medium rounded-full shadow hover:bg-yellow-400 transition duration-300">
+        See All Works
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-gray-100" id="gallery">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Memorable Moments</h2>
+
+    <div class="overflow-x-auto">
+      <div class="flex space-x-4 snap-x snap-mandatory overflow-x-auto pb-4 scroll-smooth"
+           style="scrollbar-width: none;">
+        {% for i in "123456789" %}
+          {% with img_path="gallery/"|add:i|add:".jpg" %}
+          <div class="min-w-[80%] sm:min-w-[48%] md:min-w-[30%] lg:min-w-[30%] max-w-xs bg-white rounded-xl shadow hover:shadow-lg transition duration-300 cursor-pointer snap-start"
+               onclick="openImageModal('{% static img_path %}')">
+            <img src="{% static img_path %}" alt="Gallery Image {{ i }}" class="w-full h-60 object-cover rounded-t-xl">
+            <div class="p-3">
+              <p class="text-sm text-gray-700">
+                {% if i == '1' %}A grand entrance that left everyone in awe.{% endif %}
+                {% if i == '2' %}Ẹrú Ìyàwó beautifully arranged with class.{% endif %}
+                {% if i == '3' %}Proposal and acceptance with elegance and grace.{% endif %}
+                {% if i == '4' %}Royalty in motion — the radiant bride.{% endif %}
+                {% if i == '5' %}Alaga in action — anchoring with charm and wit.{% endif %}
+                {% if i == '6' %}Heartfelt moments shared under tradition and love.{% endif %}
+                {% if i == '7' %}Unforgettable cheers and blessings from elders.{% endif %}
+                {% if i == '8' %}Bride and groom united in laughter.{% endif %}
+                {% if i == '9' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '10' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '11' %}A symbolic gift exchange moment.{% endif %}
+                {% if i == '12' %}A symbolic gift exchange moment.{% endif %}
+              </p>
+            </div>
+          </div>
+          {% endwith %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- 🖼️ Modal -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 hidden z-50 flex items-center justify-center">
+    <button onclick="closeImageModal()" class="absolute top-5 right-5 text-white text-3xl">×</button>
+    <img id="modalImage" src="" alt="Preview" class="max-w-full max-h-[90vh] rounded-xl shadow-lg transition-all duration-300">
+  </div>
+</section>
+
+<script>
+  function openImageModal(src) {
+    document.getElementById("modalImage").src = src;
+    document.getElementById("imageModal").classList.remove("hidden");
+  }
+
+  function closeImageModal() {
+    document.getElementById("imageModal").classList.add("hidden");
+    document.getElementById("modalImage").src = "";
+  }
+</script>
+
+
+<section class="py-5 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#3E005A] mb-12">What Our Clients Say</h2>
+
+    <div class="relative">
+      <div class="swiper testimonials-slider">
+        <div class="swiper-wrapper">
+          {% for t in testimonials %}
+          <div class="swiper-slide px-2">
+            <div class="bg-[#F9F6FB] p-6 rounded-2xl shadow-md text-center transition-transform duration-300 hover:shadow-lg hover:scale-[1.02]">
+              <p class="text-lg italic text-gray-700 mb-4 leading-relaxed">“{{ t.comment }}”</p>
+              <p class="font-semibold text-[#3E005A]">{{ t.name }}</p>
+              <p class="text-xs text-gray-500">{{ t.created_at|date:"M d, Y" }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="{% url 'rate_us' %}"
+         class="inline-block bg-[#FDBF24] text-[#3E005A] px-6 py-3 rounded-full text-sm font-semibold shadow hover:bg-yellow-400 transition-all duration-300">
+        + Add Testimonial
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SwiperJS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+  new Swiper('.testimonials-slider', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    spaceBetween: 20,
+    slidesPerView: 1,
+    breakpoints: {
+      768: { slidesPerView: 2 },
+    },
+  });
+</script>
+
+<section class="py-5 bg-[#F9F6FB]" id="work-videos">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#3E005A] mb-12">Watch Our Work</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for video in work_videos %}
+      <div class="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-4">
+        <h3 class="text-lg font-semibold text-[#3E005A] mb-3">{{ video.title }}</h3>
+
+        {% if video.platform == "facebook" %}
+          <iframe class="w-full h-64 rounded-md"
+                  src="https://www.facebook.com/plugins/video.php?href={{ video.video_url|urlencode }}&show_text=false&width=500"
+                  frameborder="0" allowfullscreen></iframe>
+
+        {% elif video.platform == "tiktok" %}
+          <blockquote class="tiktok-embed"
+                      cite="{{ video.video_url }}"
+                      data-video-id="{{ video.data_id }}"
+                      style="max-width: 100%; min-width: 100%;">
+            <section>Loading TikTok video...</section>
+          </blockquote>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <a href="{% url 'all_work_videos' %}"
+         class="inline-block bg-[#FDBF24] text-[#3E005A] px-6 py-3 rounded-full text-sm font-semibold shadow hover:bg-yellow-400 transition duration-300">
+        See All Videos
+      </a>
+    </div>
+  </div>
+
+  <script>
+    if (window.tiktokEmbedLoaded) {
+      window.tiktokEmbedLoaded();
+    }
+  </script>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+</section>
+
+
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Clients | Admin{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold text-[#3E005A] mb-8 text-center">All Clients</h2>
+
+  <div class="overflow-x-auto bg-[#F9F6FB] border border-[#E0D6EC] shadow rounded-2xl">
+    <table class="min-w-full text-sm divide-y divide-[#E0D6EC]">
+      <thead class="bg-[#EFE8F6] text-[#3E005A]">
+        <tr>
+          <th class="px-6 py-3 text-left font-semibold">Name</th>
+          <th class="px-6 py-3 text-left font-semibold">Email</th>
+          <th class="px-6 py-3 text-left font-semibold">Phone</th>
+          <th class="px-6 py-3 text-left font-semibold">Service</th>
+          <th class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-[#E0D6EC] text-gray-700">
+        {% for client in clients %}
+        <tr class="hover:bg-[#f3edf8] transition">
+          <td class="px-6 py-4">{{ client.full_name }}</td>
+          <td class="px-6 py-4">{{ client.email }}</td>
+          <td class="px-6 py-4">{{ client.phone }}</td>
+          <td class="px-6 py-4">{{ client.get_service_needed_display }}</td>
+          <td class="px-6 py-4">
+            <a href="{% url 'client_detail' client.pk %}"
+               class="inline-block px-4 py-1 text-sm bg-[#FDBF24] text-[#3E005A] rounded-full hover:bg-yellow-400 transition">
+              View
+            </a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center px-6 py-6 text-gray-500 italic">No clients found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

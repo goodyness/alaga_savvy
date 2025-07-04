@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Client Detail{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto py-16 px-4">
+  <h2 class="text-3xl font-bold text-[#3E005A] text-center mb-10">Client Details</h2>
+
+  <div class="bg-[#F9F6FB] border border-[#E0D6EC] p-8 rounded-2xl shadow space-y-6 text-sm sm:text-base text-gray-800">
+
+    <!-- 👤 General Info -->
+    <div>
+      <h3 class="text-xl font-semibold text-[#3E005A] mb-4">General Information</h3>
+      <p><strong>Name:</strong> {{ client.full_name }}</p>
+      <p><strong>Email:</strong> {{ client.email }}</p>
+      <p><strong>Phone:</strong> {{ client.phone }}</p>
+      <p><strong>Service:</strong> {{ client.get_service_needed_display }}</p>
+      <p><strong>Age:</strong> {{ client.age }}</p>
+      <p><strong>Occupation:</strong> {{ client.occupation }}</p>
+      <p><strong>Religion:</strong> {{ client.religion }}</p>
+      <p><strong>Marital Status:</strong> {{ client.marital_status }}</p>
+      <p><strong>Proposed Marriage Date:</strong> {{ client.proposed_date }}</p>
+      <p><strong>Address:</strong> {{ client.address }}</p>
+    </div>
+
+    <hr class="border-[#E0D6EC]">
+
+    <!-- 👰 Bride Info -->
+    <div>
+      <h3 class="text-xl font-semibold text-[#3E005A] mb-4">Bride Information</h3>
+      <p><strong>Name:</strong> {{ client.bride_name }}</p>
+      <p><strong>Oríkì:</strong> {{ client.bride_oriki }}</p>
+      <p><strong>Occupation:</strong> {{ client.bride_occupation }}</p>
+      <p><strong>Favorite Artist:</strong> {{ client.bride_favorite_artist }}</p>
+      <p><strong>Religion:</strong> {{ client.bride_religion }}</p>
+      <p><strong>Email:</strong> {{ client.bride_email }}</p>
+    </div>
+
+    <!-- 👨‍👩‍👧 Bride's Parents -->
+    <div>
+      <h4 class="text-lg font-semibold text-[#3E005A] mt-6">Bride's Father</h4>
+      <p><strong>Name:</strong> {{ client.bride_father_name }}</p>
+      <p><strong>State:</strong> {{ client.bride_father_state }}</p>
+      <p><strong>Hometown:</strong> {{ client.bride_father_hometown }}</p>
+      <p><strong>Family Compound:</strong> {{ client.bride_father_family_compound }}</p>
+      <p><strong>Occupation:</strong> {{ client.bride_father_occupation }}</p>
+      <p><strong>Religion:</strong> {{ client.bride_father_religion }}</p>
+      <p><strong>Best Songs:</strong> {{ client.bride_father_best_songs }}</p>
+
+      <h4 class="text-lg font-semibold text-[#3E005A] mt-4">Bride's Mother</h4>
+      <p><strong>Name:</strong> {{ client.bride_mother_name }}</p>
+      <p><strong>Maiden Name:</strong> {{ client.bride_mother_maiden_name }}</p>
+      <p><strong>Hometown:</strong> {{ client.bride_mother_hometown }}</p>
+      <p><strong>Family Compound:</strong> {{ client.bride_mother_family_compound }}</p>
+      <p><strong>Occupation:</strong> {{ client.bride_mother_occupation }}</p>
+      <p><strong>Religion:</strong> {{ client.bride_mother_religion }}</p>
+    </div>
+
+    <hr class="border-[#E0D6EC]">
+
+    <!-- 🤵 Groom Info -->
+    <div>
+      <h3 class="text-xl font-semibold text-[#3E005A] mb-4">Groom Information</h3>
+      <p><strong>Name:</strong> {{ client.groom_name }}</p>
+      <p><strong>Oríkì:</strong> {{ client.groom_oriki }}</p>
+      <p><strong>Occupation:</strong> {{ client.groom_occupation }}</p>
+      <p><strong>Favorite Artist:</strong> {{ client.groom_favorite_artist }}</p>
+      <p><strong>Religion:</strong> {{ client.groom_religion }}</p>
+    </div>
+
+    <!-- 👨‍👩‍👦 Groom's Parents -->
+    <div>
+      <h4 class="text-lg font-semibold text-[#3E005A] mt-6">Groom's Father</h4>
+      <p><strong>Name:</strong> {{ client.groom_father_name }}</p>
+      <p><strong>State:</strong> {{ client.groom_father_state }}</p>
+      <p><strong>Hometown:</strong> {{ client.groom_father_hometown }}</p>
+      <p><strong>Family Compound:</strong> {{ client.groom_father_family_compound }}</p>
+      <p><strong>Occupation:</strong> {{ client.groom_father_occupation }}</p>
+      <p><strong>Favorite Artist:</strong> {{ client.groom_father_favorite_artist }}</p>
+
+      <h4 class="text-lg font-semibold text-[#3E005A] mt-4">Groom's Mother</h4>
+      <p><strong>Name:</strong> {{ client.groom_mother_name }}</p>
+      <p><strong>Maiden Name:</strong> {{ client.groom_mother_maiden_name }}</p>
+      <p><strong>State:</strong> {{ client.groom_mother_state }}</p>
+      <p><strong>Hometown:</strong> {{ client.groom_mother_hometown }}</p>
+      <p><strong>Family Compound:</strong> {{ client.groom_mother_family_compound }}</p>
+      <p><strong>Occupation:</strong> {{ client.groom_mother_occupation }}</p>
+      <p><strong>Favorite Artist:</strong> {{ client.groom_mother_favorite_artist }}</p>
+    </div>
+
+    <hr class="border-[#E0D6EC]">
+
+    <!-- ✅ Permission -->
+    <div>
+      <p><strong>Share on Social Media:</strong> {{ client.share_on_social_media|yesno:"Yes,No" }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
