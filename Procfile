@@ -1,0 +1,1 @@
+web: gunicorn alagasavvy.wsgi:application
