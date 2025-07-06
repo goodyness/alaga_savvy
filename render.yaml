@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: alagasavvy
+    env: docker
+    plan: free
+    
+    buildCommand: ""
+    startCommand: gunicorn alagasavvy.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: alagasavvy.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
