@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>{% block title %}AlagaSavvy{% endblock %}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{% block title %}AlagaSavvy - Premier Traditional Wedding Compère{% endblock %}</title>
+
+  <meta name="description" content="AlagaSavvy provides exceptional traditional wedding hosting services that honor cultural values with modern elegance. Book the perfect compère for your event." />
+  <meta name="keywords" content="alaga, wedding compere, traditional wedding, Yoruba wedding, event host, alaga iduro, alaga ijoko, AlagaSavvy" />
+  <meta name="author" content="AlagaSavvy Team" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AlagaSavvy - Premier Traditional Wedding Compère" />
+  <meta property="og:description" content="Book a vibrant and professional alaga for your traditional wedding today!" />
+  <meta property="og:image" content="{% static 'images/og-preview.jpg' %}" />
+  <meta property="og:url" content="https://alagasavvy.org" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AlagaSavvy - Traditional Wedding Compère" />
+  <meta name="twitter:description" content="Culturally-rich, memorable wedding hosting services." />
+  <meta name="twitter:image" content="{% static 'images/og-preview.jpg' %}" />
+
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/a2e0e6f4c5.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body class="bg-[#F9F6FB] text-[#3E005A]">
   <header x-data="{ open: false }" class="sticky top-0 z-50 bg-[#3E005A]/90 backdrop-blur shadow-md text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
