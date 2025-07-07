@@ -64,7 +64,10 @@ if DEBUG:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(default='')
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 
 AUTH_PASSWORD_VALIDATORS = [
