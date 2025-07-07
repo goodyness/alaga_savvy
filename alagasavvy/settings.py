@@ -11,7 +11,15 @@ SECRET_KEY = 'django-insecure-1u69a&b8^nz4ms(l9sq5=x858kwwviks$jl!cxd6rj_97#!$y%
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['your-railway-domain.up.railway.app']
+    ALLOWED_HOSTS = ['alagasavvy.org', 'www.alagasavvy.org', 'alagasavvy.onrender.com']
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://alagasavvy.org',
+    'https://www.alagasavvy.org',
+    'https://alagasavvy.onrender.com',
+]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
