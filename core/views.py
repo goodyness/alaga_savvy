@@ -58,7 +58,7 @@ def custom_login(request):
             login(request, user)
             return redirect('admin_dashboard')
         else:
-            messages.error(request, 'Invalid credentials or access denied.')
+            messages.error(request, "Invalid login credentials.", extra_tags="login")
 
     return render(request, 'login.html')
 

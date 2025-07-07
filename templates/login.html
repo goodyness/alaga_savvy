@@ -15,10 +15,13 @@
     {% if messages %}
       <div class="mb-4">
         {% for message in messages %}
-          <div class="text-sm text-red-600">{{ message }}</div>
+          {% if 'login' in message.tags %}
+            <div class="text-sm text-red-600">{{ message }}</div>
+          {% endif %}
         {% endfor %}
       </div>
     {% endif %}
+
 
     <form method="POST" class="space-y-5">
       {% csrf_token %}

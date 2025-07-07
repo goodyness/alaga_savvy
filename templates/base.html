@@ -33,6 +33,17 @@
 </head>
 
 <body class="bg-[#F9F6FB] text-[#3E005A]">
+
+
+  {% if messages %}
+      <div class="mb-4">
+        {% for message in messages %}
+          <div class="text-sm text-red-600">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    
   <header x-data="{ open: false }" class="sticky top-0 z-50 bg-[#3E005A]/90 backdrop-blur shadow-md text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
