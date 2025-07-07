@@ -22,10 +22,11 @@
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex space-x-8 text-sm font-semibold">
+        <a href="{% url 'home' %}" class="hover:text-[#FDBF24] transition">Home</a>
         <a href="{% url 'about' %}" class="hover:text-[#FDBF24] transition">About</a>
         <a href="#services" class="hover:text-[#FDBF24] transition">Services</a>
-        <a href="#works" class="hover:text-[#FDBF24] transition">Our Works</a>
-        <a href="#contact" class="hover:text-[#FDBF24] transition">Contact</a>
+        <a href="{% url 'all_recent_works' %}" class="hover:text-[#FDBF24] transition">Our Works</a>
+        <a href="{% url 'request_service' %}" class="hover:text-[#FDBF24] transition">Contact</a>
       </nav>
 
       <!-- Auth Links -->
@@ -53,10 +54,11 @@
 
   <!-- Mobile Menu -->
   <div x-show="open" x-transition class="md:hidden px-4 pb-4 bg-[#3E005A]/95 backdrop-blur-sm text-white">
+    <a href="{% url 'home' %}" class="hover:text-[#FDBF24] transition">Home</a>
     <a href="{% url 'about' %}" class="block py-2 text-sm hover:text-[#FDBF24] transition">About</a>
     <a href="#services" class="block py-2 text-sm hover:text-[#FDBF24] transition">Services</a>
-    <a href="#works" class="block py-2 text-sm hover:text-[#FDBF24] transition">Our Works</a>
-    <a href="#contact" class="block py-2 text-sm hover:text-[#FDBF24] transition">Contact</a>
+    <a href="{% url 'all_recent_works' %}" class="block py-2 text-sm hover:text-[#FDBF24] transition">Our Works</a>
+    <a href="{% url 'request_service' %}" class="block py-2 text-sm hover:text-[#FDBF24] transition">Contact</a>
     {% if request.user.is_authenticated %}
       <a href="{% url 'admin_dashboard' %}" class="block py-2 text-sm hover:text-[#FDBF24] transition">Dashboard</a>
       <a href="{% url 'logout' %}" class="block py-2 text-sm text-red-300 hover:text-red-100">Logout</a>
@@ -66,18 +68,14 @@
   </div>
 </header>
 
-
-  <!-- ====== Main Content ====== -->
   <main class="min-h-[80vh]">
     {% block content %}
     {% endblock %}
   </main>
 
-  <!-- ====== Footer ====== -->
 <footer class="bg-[#3E005A] border-t border-[#FDBF24] py-12 mt-16 text-white">
   <div class="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-white text-center md:text-left">
 
-    <!-- Contact Info -->
     <div>
       <h4 class="text-base font-semibold text-[#FDBF24] mb-4">Contact Us</h4>
       <ul class="space-y-3">
@@ -107,11 +105,9 @@
       </ul>
     </div>
 
-    <!-- Social Links -->
     <div>
       <h4 class="text-base font-semibold text-[#FDBF24] mb-4">Follow Us</h4>
       <div class="flex justify-center md:justify-start space-x-5 mt-2">
-        <!-- WhatsApp -->
         <a href="https://wa.me/message/KXFRTU6HPPDCF1" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -120,7 +116,6 @@
           </svg>
         </a>
 
-        <!-- Instagram -->
         <a href="https://www.instagram.com/alagasavvy" target="_blank" aria-label="Instagram" class="hover:text-pink-400 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
